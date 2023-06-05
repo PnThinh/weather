@@ -1,0 +1,87 @@
+{% load tagsfillter %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>Weater checking</title>
+
+		<!-- Loading third party fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+                {% load static %}
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="{% static 'fonts/style.css' %}">
+		
+		<!--[if lt IE 9]>
+		<script src="{% static 'js/ie-support/html5.js' %}"></script>
+		<script src="{% static 'js/ie-support/respond.js' %}"></script>
+		<![endif]-->
+
+	</head>
+
+
+	<body>
+		<div class="site-content">
+			<div class="site-header">
+				<div class="container">
+					<a href="#" class="branding">
+						<img src="{% static 'images/logo.png' %}" alt="" class="logo">
+						<div class="logo-type">
+							<h1 class="site-title">Weather check</h1>
+						</div>
+					</a>
+					<div class="mobile-navigation"></div>
+				</div>
+			</div> <!-- .site-header -->
+
+			<div class="hero" data-bg-image="{% static 'images/banner.png' %}">
+				<div class="container">
+					<form action="#" class="find-location">
+						<input type="text" placeholder="Find your location...">
+						<input type="submit" value="Find">
+					</form>
+
+				</div>
+			</div>
+
+			<div class="forecast-table">
+				<div class="container">
+					<div class="forecast-container">
+						{% for x in n %}							
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">{{weather24.date|get_index:x}}</div>
+								<div class="day">{{weather24.time|get_index:x}}</div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="{{weather24.icon|get_index:x}}" alt="" width=48>		
+								</div>
+								<div class="degree"><sup>o</sup>C</div>
+								<span><img src="{% static 'images/icon-wind.png' %}" alt="">km/h</span>
+							</div>
+						</div>
+						{% endfor %}
+					</div>					
+				</div>
+
+			</div>
+						
+			<footer class="site-footer">
+				<div class="container">
+				
+
+				</div>
+			</footer> <!-- .site-footer -->
+		</div>
+		
+		<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+		<script src="{% static 'js/plugins.js' %}"></script>
+		<script src="{% static 'js/app.js' %}"></script>
+                
+	</body>
+
+</html>
